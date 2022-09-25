@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Am_Blog::menu"
+             title="Am Blog"
+             module="Am_Blog"
+             sortOrder="68"
+             resource="Am_Blog::menu"/>
+        <add id="Am_Blog::post"
+             title="Posts"
+             module="Am_Blog"
+             sortOrder="10"
+             resource="Am_Blog::post"
+             action="am_blog/post/index"
+             parent="Am_Blog::menu"/>
+        <add id="Am_Blog::category"
+             title="Categories"
+             module="Am_Blog"
+             sortOrder="20"
+             resource="Am_Blog::post"
+             action="am_blog/category/index"
+             parent="Am_Blog::menu"/>
+        <add id="Am_Blog::config"
+             title="Configuration"
+             module="Am_Blog"
+             sortOrder="99"
+             resource="Am_Blog::menu_configuration"
+             action="adminhtml/system_config/edit/section/am_blog"
+             parent="Am_Blog::menu"/>
+    </menu>
+</config>
