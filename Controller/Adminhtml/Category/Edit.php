@@ -1,28 +1,28 @@
 <?php
 declare(strict_types=1);
 
-namespace Am\Blog\Controller\Adminhtml\Post;
+namespace Am\Blog\Controller\Adminhtml\Category;
 
-use Am\Blog\Api\Data\PostInterface;
-use Am\Blog\Controller\Adminhtml\AbstractPost;
-use Am\Blog\Model\PostFactory;
-use Am\Blog\Model\ResourceModel\Post\PostRepository;
+use Am\Blog\Api\Data\CategoryInterface;
+use Am\Blog\Controller\Adminhtml\AbstractCategory;
+use Am\Blog\Model\CategoryFactory;
+use Am\Blog\Model\ResourceModel\Category\CategoryRepository;
 use Magento\Backend\App\Action\Context;
 use Magento\Backend\Model\View\Result\Redirect;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\View\Result\PageFactory;
 
-class Edit extends AbstractPost
+class Edit extends AbstractCategory
 {
     /**
-     * @var PostFactory
+     * @var CategoryFactory
      */
-    private $postFactory;
+    private $categoryFactory;
 
     /**
-     * @var PostRepository
+     * @var CategoryRepository
      */
-    private $postRepository;
+    private $categoryRepository;
 
     /**
      * @var PageFactory
@@ -30,51 +30,51 @@ class Edit extends AbstractPost
     private $resultPageFactory;
 
     public function __construct(
-        PostFactory $postFactory,
-        PostRepository $postRepository,
+        CategoryFactory $categoryFactory,
+        CategoryRepository $categoryRepository,
         Context $context,
         PageFactory $resultPageFactory
     ) {
         parent::__construct($context);
-        $this->postFactory = $postFactory;
-        $this->postRepository = $postRepository;
+        $this->categoryFactory = $categoryFactory;
+        $this->categoryRepository = $categoryRepository;
         $this->resultPageFactory = $resultPageFactory;
     }
 
     public function execute()
     {
-        $postId = (int)$this->getRequest()->getParam(PostInterface::POST_ID);
+        $categoryId = (int)$this->getRequest()->getParam(CategoryInterface::CATEGORY_ID);
 
-        if ($postId) {
+        if ($categoryId) {
             try {
-                $post = $this->postRepository->getById($postId);
+                $category = $this->categoryRepository->getById($categoryId);
             } catch (NoSuchEntityException $exception) {
                 $this->messageManager->addExceptionMessage(
                     $exception,
-                    __('This post no longer exists.')
+                    __('This category no longer exists.')
                 );
                 $resultRedirect = $this->resultRedirectFactory->create();
                 $resultRedirect->setPath('*/*/');
 
                 return $resultRedirect;
             }
-            if (!$post->getId()) {
-                $this->messageManager->addErrorMessage(__('This Post no longer exists.'));
+            if (!$category->getId()) {
+                $this->messageManager->addErrorMessage(__('This Category no longer exists.'));
                 /** @var Redirect $resultRedirect */
                 $resultRedirect = $this->resultRedirectFactory->create();
                 return $resultRedirect->setPath('*/*/');
             }
         } else {
-            $post = $this->postFactory->create();
+            $category = $this->categoryFactory->create();
         }
 
         $resultPage = $this->resultPageFactory->create();
         $resultPage
-            ->setActiveMenu(AbstractPost::ADMIN_RESOURCE)
+            ->setActiveMenu(AbstractCategory::ADMIN_RESOURCE)
             ->getConfig()->getTitle()->prepend(
-                $postId
-                    ? __('Edit "%1" post', $post->getTitle())
-                    : __('New Post')
+                $categoryId
+                    ? __('Edit "%1" category', $category->getTitle())
+                    : __('New Category')
             );
 
         return $resultPage;

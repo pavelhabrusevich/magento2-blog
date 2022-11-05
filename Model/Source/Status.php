@@ -5,7 +5,7 @@ namespace Am\Blog\Model\Source;
 
 use Magento\Framework\Data\OptionSourceInterface;
 
-class PostStatus implements OptionSourceInterface
+class Status implements OptionSourceInterface
 {
     public const DISABLED = 0;
     public const ENABLED = 1;

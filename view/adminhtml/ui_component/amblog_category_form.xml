@@ -2,12 +2,12 @@
 <form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
     <argument name="data" xsi:type="array">
         <item name="js_config" xsi:type="array">
-            <item name="provider" xsi:type="string">post_form.post_form_data_source</item>
-            <item name="deps" xsi:type="string">post_form.post_form_data_source</item>
+            <item name="provider" xsi:type="string">amblog_category_form.am_blog_category_form_data_source</item>
+            <item name="deps" xsi:type="string">amblog_category_form.am_blog_category_form_data_source</item>
         </item>
         <item name="config" xsi:type="array">
             <item name="dataScope" xsi:type="string">data</item>
-            <item name="namespace" xsi:type="string">post_form_data_source</item>
+            <item name="namespace" xsi:type="string">am_blog_category_form_data_source</item>
         </item>
         <item name="label" xsi:type="string" translate="true">Edit</item>
         <item name="template" xsi:type="string">templates/form/collapsible</item>
@@ -18,10 +18,10 @@
                 <item name="class" xsi:type="string">back</item>
                 <item name="url" xsi:type="string">*/*/</item>
             </item>
-            <item name="delete" xsi:type="string">Am\Blog\Block\Adminhtml\Buttons\Post\DeleteButton</item>
+            <item name="delete" xsi:type="string">Am\Blog\Block\Adminhtml\Buttons\Category\DeleteButton</item>
             <item name="save" xsi:type="array">
                 <item name="name" xsi:type="string">save</item>
-                <item name="label" xsi:type="string" translate="true">Save Post</item>
+                <item name="label" xsi:type="string" translate="true">Save Category</item>
                 <item name="class" xsi:type="string">save primary</item>
             </item>
             <item name="save_and_continue" xsi:type="array">
@@ -31,12 +31,12 @@
             </item>
         </item>
     </argument>
-    <dataSource name="post_form.post_form_data_source">
+    <dataSource name="amblog_category_form.am_blog_category_form_data_source">
         <argument name="dataProvider" xsi:type="configurableObject">
-            <argument name="class" xsi:type="string">Am\Blog\Model\Post\DataProvider\Form</argument>
-            <argument name="name" xsi:type="string">post_form_data_source</argument>
-            <argument name="primaryFieldName" xsi:type="string">post_id</argument>
-            <argument name="requestFieldName" xsi:type="string">post_id</argument>
+            <argument name="class" xsi:type="string">Am\Blog\Model\Category\DataProvider\Form</argument>
+            <argument name="name" xsi:type="string">am_blog_category_form_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">category_id</argument>
+            <argument name="requestFieldName" xsi:type="string">category_id</argument>
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="submit_url" xsi:type="url" path="*/*/save"/>
@@ -52,7 +52,7 @@
     <fieldset name="general">
         <argument name="data" xsi:type="array">
             <item name="config" xsi:type="array">
-                <item name="label" xsi:type="string" translate="true">Post</item>
+                <item name="label" xsi:type="string" translate="true">Category</item>
             </item>
         </argument>
         <field name="title">
@@ -63,7 +63,7 @@
                     <item name="dataType" xsi:type="string">text</item>
                     <item name="formElement" xsi:type="string">input</item>
                     <item name="dataScope" xsi:type="string">title</item>
-                    <item name="source" xsi:type="string">blog_posts</item>
+                    <item name="source" xsi:type="string">blog_categories</item>
                     <item name="validation" xsi:type="array">
                         <item name="required-entry" xsi:type="boolean">true</item>
                     </item>
@@ -73,14 +73,14 @@
         </field>
         <field name="status">
             <argument name="data" xsi:type="array">
-                <item name="options" xsi:type="object">Am\Blog\Model\Source\PostStatus</item>
+                <item name="options" xsi:type="object">Am\Blog\Model\Source\Status</item>
                 <item name="config" xsi:type="array">
                     <item name="label" xsi:type="string" translate="true">Enabled</item>
                     <item name="visible" xsi:type="boolean">true</item>
                     <item name="dataType" xsi:type="string">boolean</item>
                     <item name="formElement" xsi:type="string">checkbox</item>
                     <item name="dataScope" xsi:type="string">status</item>
-                    <item name="source" xsi:type="string">blog_posts</item>
+                    <item name="source" xsi:type="string">blog_categories</item>
                     <item name="prefer" xsi:type="string">toggle</item>
                     <item name="valueMap" xsi:type="array">
                         <item name="true" xsi:type="number">1</item>
@@ -99,7 +99,7 @@
                     <item name="dataType" xsi:type="string">text</item>
                     <item name="formElement" xsi:type="string">input</item>
                     <item name="dataScope" xsi:type="string">url_key</item>
-                    <item name="source" xsi:type="string">blog_posts</item>
+                    <item name="source" xsi:type="string">blog_categories</item>
                     <item name="validation" xsi:type="array">
                         <item name="required-entry" xsi:type="boolean">true</item>
                     </item>
@@ -114,7 +114,7 @@
                     <item name="visible" xsi:type="boolean">true</item>
                     <item name="formElement" xsi:type="string">wysiwyg</item>
                     <item name="dataScope" xsi:type="string">content</item>
-                    <item name="source" xsi:type="string">blog_posts</item>
+                    <item name="source" xsi:type="string">blog_categories</item>
                     <item name="notice" xsi:type="string" translate="true">Note: Keyboard shortcut to activate editor help : Alt + 0 (Windows) or &#x2325;0 (MacOS)</item>
                     <item name="sortOrder" xsi:type="number">50</item>
                 </item>

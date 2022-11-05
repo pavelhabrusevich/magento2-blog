@@ -3,8 +3,8 @@
 <listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
     <argument name="data" xsi:type="array">
         <item name="js_config" xsi:type="array">
-            <item name="provider" xsi:type="string">post_listing.am_blog_post_listing_data_source</item>
-            <item name="deps" xsi:type="string">post_listing.am_blog_post_listing_data_source</item>
+            <item name="provider" xsi:type="string">amblog_post_listing.am_blog_post_listing_data_source</item>
+            <item name="deps" xsi:type="string">amblog_post_listing.am_blog_post_listing_data_source</item>
         </item>
         <item name="spinner" xsi:type="string">am_blog_post_columns</item>
         <item name="buttons" xsi:type="array">
@@ -103,7 +103,7 @@
                 <item name="config" xsi:type="array">
                     <item name="filter" xsi:type="string">text</item>
                     <item name="label" xsi:type="string" translate="true">Title</item>
-                    <item name="sortOrder" xsi:type="number">20</item>
+                    <item name="sortOrder" xsi:type="number">10</item>
                 </item>
             </argument>
         </column>
@@ -112,11 +112,11 @@
                 <item name="config" xsi:type="array">
                     <item name="filter" xsi:type="string">text</item>
                     <item name="label" xsi:type="string" translate="true">Url Key</item>
-                    <item name="sortOrder" xsi:type="number">30</item>
+                    <item name="sortOrder" xsi:type="number">20</item>
                 </item>
             </argument>
         </column>
-        <column name="status" class="Am\Blog\Ui\Component\Listing\Column\PostStatus">
+        <column name="status" class="Am\Blog\Ui\Component\Listing\Column\Status">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="label" xsi:type="string" translate="true">Status</item>
@@ -131,7 +131,7 @@
                     <item name="dataType" xsi:type="string">select</item>
                     <item name="sortOrder" xsi:type="number">30</item>
                 </item>
-                <item name="options" xsi:type="object">Am\Blog\Model\Source\PostStatus</item>
+                <item name="options" xsi:type="object">Am\Blog\Model\Source\Status</item>
             </argument>
         </column>
         <column name="created_at" class="Magento\Ui\Component\Listing\Columns\Date">
@@ -146,7 +146,7 @@
             </argument>
         </column>
 
-        <actionsColumn name="actions" class="Am\Blog\Ui\Component\Listing\Column\PostAction">
+        <actionsColumn name="actions" class="Am\Blog\Ui\Component\Listing\Column\Post\Action">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="resizeEnabled" xsi:type="boolean">false</item>

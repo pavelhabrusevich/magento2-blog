@@ -14,4 +14,17 @@
             <column name="post_id"/>
         </constraint>
     </table>
+    <table name="am_blog_categories" resource="default" engine="innodb" comment="am_blog_categories">
+        <column xsi:type="int" name="category_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Category Id"/>
+        <column xsi:type="varchar" name="title" nullable="false" comment="Title"/>
+        <column xsi:type="smallint" name="status" padding="5" unsigned="true" nullable="false" identity="false" comment="Status"/>
+        <column xsi:type="varchar" name="url_key" nullable="false" length="255" comment="Url Key"/>
+        <column xsi:type="longtext" name="description" nullable="false" comment="Description"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP" comment="Created At"/>
+        <column xsi:type="timestamp" name="updated_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP" comment="Updated At"/>
+        <!--        <column xsi:type="text" name="post_thumbnail" nullable="true" comment="Post Thumbnail"/>-->
+        <constraint xsi:type="primary" referenceId="AM_BLOG_CATEGORIES_PRIMARY">
+            <column name="category_id"/>
+        </constraint>
+    </table>
 </schema>

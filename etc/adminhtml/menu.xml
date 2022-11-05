@@ -17,7 +17,7 @@
              title="Categories"
              module="Am_Blog"
              sortOrder="20"
-             resource="Am_Blog::post"
+             resource="Am_Blog::category"
              action="am_blog/category/index"
              parent="Am_Blog::menu"/>
         <add id="Am_Blog::config"

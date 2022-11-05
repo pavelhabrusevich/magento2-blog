@@ -1,5 +1,5 @@
 {
-    "amasty_blog_posts": {
+    "am_blog_posts": {
         "column": {
             "post_id": true,
             "status": true,
@@ -7,6 +7,19 @@
             "url_key": true,
             "content": true,
             "created_at": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "am_blog_categories": {
+        "column": {
+            "title": true,
+            "status": true,
+            "url_key": true,
+            "description": true,
+            "created_at": true,
+            "updated_at": true
         },
         "constraint": {
             "PRIMARY": true

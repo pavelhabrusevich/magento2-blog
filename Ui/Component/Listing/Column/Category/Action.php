@@ -1,14 +1,14 @@
 <?php
 declare(strict_types=1);
 
-namespace Am\Blog\Ui\Component\Listing\Column;
+namespace Am\Blog\Ui\Component\Listing\Column\Category;
 
 use Magento\Framework\UrlInterface;
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Framework\View\Element\UiComponentFactory;
 use Magento\Ui\Component\Listing\Columns\Column;
 
-class PostAction extends Column
+class Action extends Column
 {
     /**
      * @var UrlInterface
@@ -33,9 +33,9 @@ class PostAction extends Column
                 $item[$this->getData('name')] = [
                     'edit' => [
                         'href' => $this->urlBuilder->getUrl(
-                            'am_blog/post/edit',
+                            'am_blog/category/edit',
                             [
-                                'post_id' => $item['post_id']
+                                'category_id' => $item['category_id']
                             ]
                         ),
                         'label' => __('Edit')

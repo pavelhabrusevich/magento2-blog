@@ -5,7 +5,7 @@ namespace Am\Blog\Ui\Component\Listing\Column;
 
 use Magento\Ui\Component\Listing\Columns\Column;
 
-class PostStatus extends Column
+class Status extends Column
 {
     public function prepareDataSource(array $dataSource)
     {
