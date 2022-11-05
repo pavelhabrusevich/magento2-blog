@@ -13,4 +13,8 @@
             <argument name="resourceModel" xsi:type="string">Am\Blog\Model\ResourceModel\Post\Post</argument>
         </arguments>
     </virtualType>
+
+    <preference for="Am\Blog\Api\Data\PostInterface" type="Am\Blog\Model\Post"/>
+    <preference for="Am\Blog\Api\Data\PostSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+    <preference for="Am\Blog\Api\PostRepositoryInterface" type="Am\Blog\Model\ResourceModel\Post\PostRepository"/>
 </config>
